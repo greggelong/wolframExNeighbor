@@ -18,7 +18,7 @@ multiplying interesting elementary CAs usually produce them
 
 some decimal examples:
 
-30* 256
+30* 257
 
 7710
 
