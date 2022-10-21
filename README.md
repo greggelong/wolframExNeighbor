@@ -1,7 +1,7 @@
 # wolfp52022
 
 
-Wolfram Elementary Cellular Automaton * 256
+Wolfram Elementary Cellular Automaton * 257
 
 65536 instead of 256
 
