@@ -13,7 +13,8 @@ let generation = 0; // oh damn this is global too !!!!
 //let ruleset = [0, 0, 0, 1, 1, 1, 1, 0]; 
 //let ruleset = [0,1,1,0,1,1,1,0];
 //let ruleset = [0, 0, 0, 1, 1, 1, 1, 0,0, 1, 0, 1, 1, 0, 1, 0]
-let ruleset = [0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0]
+//let ruleset = [0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0]
+let ruleset = [1,0,1,0,0,0,0,1,0,0,0,1,1,1,1,0]
 let cellw = 5; // cell size
 
 console.log(cells.length);
