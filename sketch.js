@@ -14,14 +14,22 @@ let generation = 0; // oh damn this is global too !!!!
 //let ruleset = [0,1,1,0,1,1,1,0];
 //let ruleset = [0, 0, 0, 1, 1, 1, 1, 0,0, 1, 0, 1, 1, 0, 1, 0]
 //let ruleset = [0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0]
-let ruleset = [1,0,1,0,0,0,0,1,0,0,0,1,1,1,1,0]
+//let ruleset = [1,0,1,0,0,0,0,1,0,0,0,1,1,1,1,0]
+let ruleset;
 let cellw = 5; // cell size
 
-console.log(cells.length);
+
 // makes a big difference if the cells length is even or odd
 function setup() {
   createCanvas(1000, windowHeight);
   background(255,255,0);
+  console.log(binConvert(30,16));
+  //ruleset = binConvert(floor(random(255 ,64000)),16);
+  //ruleset =binConvert(1649,16);
+  let randDec = floor(random(255,65535))
+  print("Decimal: ", randDec)
+  ruleset= binConvert(randDec,16)
+
   noStroke();
   for (let i=0; i < 200; i++){
   cells[i] = floor(random(2)); // or random
@@ -37,7 +45,7 @@ function draw() {
   if (mouseIsPressed) {
     getNextGen();
     generation++;
-    console.log(generation);
+    //console.log(generation);
     displayCells(generation);
     if (generation*cellw > height){
       //background(255);
@@ -102,4 +110,19 @@ function rules(a, b, c, d) {
   else if (a == 0 && b == 0 && c == 0 && d==1) return ruleset[14];
   else if (a == 0 && b == 0 && c == 0 && d==0) return ruleset[15];
 
+}
+
+
+
+function binConvert(a, bitLen) {
+  // takes in a decimal and a bit length and returns a list of ones and zeros binary for that number
+
+  let b = a.toString(2); // converts it to binary but leading zeros, not 8 bits eg. 3 = "11"
+  let mask = "0".repeat(bitLen); // a mask to get the extra zeros
+  let c = mask.slice(0, bitLen - b.length); // slice to get the right number of zeros
+  // eg. if b = "11" then c = "000000"
+  let binstring = c + b; // binary string so 3 will give 00000011 8 bits
+
+  let binArray = int(binstring.split("")); // is an aray of ints so [0,0,0,0,0,0,1,1]
+  return binArray;
 }
