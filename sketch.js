@@ -17,20 +17,27 @@ let generation = 0; // oh damn this is global too !!!!
 //let ruleset = [1,0,1,0,0,0,0,1,0,0,0,1,1,1,1,0]
 let ruleset;
 let cellw = 5; // cell size
+let para; // for output
+let myinput;
+let myCheckBox;
+
 
 
 // makes a big difference if the cells length is even or odd
 function setup() {
+  
+  noStroke();
+  //para = createP(ruleset);
+  myinput = createInput(56688);
+  myinput.changed(setBinRule);
+  myCheckbox = createCheckbox("Rand first state",false);
+  myCheckbox.changed(setBinRule);
+  setBinRule()
   createCanvas(1000, windowHeight);
   background(255,255,0);
-  console.log(binConvert(30,16));
-  //ruleset = binConvert(floor(random(255 ,64000)),16);
-  //ruleset =binConvert(1649,16);
-  let randDec = floor(random(255,65535))
-  print("Decimal: ", randDec)
-  ruleset= binConvert(randDec,16)
+  print(ruleset)
 
-  noStroke();
+
   for (let i=0; i < 200; i++){
   cells[i] = floor(random(2)); // or random
   }
@@ -39,6 +46,22 @@ function setup() {
   arrayCopy(cells,newCells);  // so the arrarys have a first and last element index as they are skiped when creating next generation
   
 }
+
+function setBinRule(){
+  
+ let a = int(myinput.value());
+ ruleset = binConvert(a,16);
+ print(ruleset)
+
+}
+
+function rndBinRule(){
+  let randDec = floor(random(255,65535))
+  print("Decimal: ", randDec)
+  ruleset= binConvert(randDec,16)
+
+}
+
 
 function draw() {
   displayCells(generation);
