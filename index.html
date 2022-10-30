@@ -5,31 +5,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>cellular automata</title>
-  <style>
-    html, body {
-  height: 100%;
-}
-
-  body {
-  margin: 0;
-  display: flex;
-  background-color: cornflowerblue;
-
-  /* This centers our sketch horizontally. */
-  justify-content: center;
-
-  /* This centers our sketch vertically. 
-  align-items: center;*/
-}
-  </style>
-  <script src="p5.min.js"></script>
   
-  <script src="sketch.js"></script>
+  <script src="p5.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+ 
 </head>
 
 <body>
-  <main>
-  </main>
+  <script src="sketch.js"></script>
+  <input id="input" value="56688" />
+  <button id="btn">random rule</button>
+  <button id="rst">clear it</button>
+  <input type="checkbox" id="rndbox" checked />
+  <label for="rndbox">Multi rnd seeds</label>
 </body>
 
 </html>

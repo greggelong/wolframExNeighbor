@@ -19,7 +19,9 @@ let ruleset;
 let cellw = 5; // cell size
 let para; // for output
 let myinput;
-let myCheckBox;
+let box;
+let inbutton;
+let clrButton;
 
 
 
@@ -28,23 +30,20 @@ function setup() {
   
   noStroke();
   //para = createP(ruleset);
-  myinput = createInput(56688);
+  myinput = select('#input');
   myinput.changed(setBinRule);
-  myCheckbox = createCheckbox("Rand first state",false);
-  myCheckbox.changed(setBinRule);
+  inbutton = select('#btn')
+  inbutton.mouseClicked(rndBinRule)
+  clrButton = select('#rst')
+  clrButton.mouseClicked(resetIt)
+  //box = createCheckbox("multi rnd seeds", true)
+  box = select('#rndbox')
+  print("bing",box.checked())
   setBinRule()
   createCanvas(1000, windowHeight);
   background(255,255,0);
   print(ruleset)
-
-
-  for (let i=0; i < 200; i++){
-  cells[i] = floor(random(2)); // or random
-  }
-  console.log(cells.length);
-  cells[int(cells.length/2)] = 1;  // you have to use int here or it wont give an int with some screen sizes and you will not have a 1 
-  arrayCopy(cells,newCells);  // so the arrarys have a first and last element index as they are skiped when creating next generation
-  
+  resetIt();
 }
 
 function setBinRule(){
@@ -58,7 +57,25 @@ function setBinRule(){
 function rndBinRule(){
   let randDec = floor(random(255,65535))
   print("Decimal: ", randDec)
+  myinput.value(randDec)
   ruleset= binConvert(randDec,16)
+
+}
+
+function resetIt(){
+  // resets the screen with random seeds and generation
+  generation = 0;
+  background(255,255,0);
+  for (let i=0; i < 200; i++){
+    if(box.checked()){
+    cells[i] = floor(random(2)); // or random
+    } else{
+      cells[i] = 0; // set all to zero except the middle
+    }
+    }
+    console.log(cells.length);
+    cells[int(cells.length/2)] = 1;  // you have to use int here or it wont give an int with some screen sizes and you will not have a 1 
+    arrayCopy(cells,newCells);  // so the arrarys have a first and last element index as they are skiped when creating next generation
 
 }
 
