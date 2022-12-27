@@ -1,4 +1,4 @@
-# wolfp52022
+# Wolfram Extended neighborhood
 
 
 Wolfram Elementary Cellular Automaton * 257
@@ -39,4 +39,4 @@ my favorite overlap for rule 90 is a 51 cell row length
 
 it produces something like a generative landscape 
 
-https://greggelong.github.io/wolfp52022
+https://greggelong.github.io/wolframExNeighbor
